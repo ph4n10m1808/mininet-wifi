@@ -69,6 +69,9 @@ echo "Detected Linux distribution: $DIST $RELEASE $CODENAME $ARCH"
 if [ "$DIST" = "Pop" ]; then
     DIST="Ubuntu"
 fi
+if [ "$DIST" = "Kali" ]; then
+    DIST="Debian"
+fi
 # Kernel params
 
 KERNEL_NAME=`uname -r`
@@ -189,8 +192,8 @@ function wifi_deps {
           ethtool help2man ${PYPKG}-pyflakes python3-pylint \
                             python-pep8 ${PYPKG}-pexpect ${PYPKG}-tk
     else
-        pf=pyflakes
-        pep=pep8
+        pf=pyflakes3
+        pep=pycodestyle
         if [ $PYTHON_VERSION == 3 ]; then
             ln -sf python3 /usr/bin/python
         fi
